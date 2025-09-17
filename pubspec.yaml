@@ -14,13 +14,23 @@ dependencies:
   firebase_auth: any
   firebase_messaging: any
   firebase_database: any
-  flutter_screenutil: ^5.9.3
+  flutter_screenutil: any
+  json_annotation: any
+  freezed_annotation: any
+  dartz: any
+  get_it: any
+  injectable: any
+  flutter_bloc: any
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
+  json_serializable: any
+  build_runner: any
+  freezed: any
+  injectable_generator: any
 
 
 flutter:
