@@ -6,4 +6,6 @@ abstract class AuthRepository {
     required String email,
     required String password,
   });
+
+  Future<Either<FirebaseException, UserCredential>> signUp({required String email,required String passwd});
 }

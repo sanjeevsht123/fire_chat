@@ -25,4 +25,14 @@ class AuthRepositoryImpl extends AuthRepository {
       return left(e);
     }
   }
+
+  @override
+  Future<Either<FirebaseException, UserCredential>> signUp({required String email, required String passwd}) async {
+    try{
+      final response= await _remoteSource.signUp(email: email, password: passwd);
+      return right(response);
+    }on FirebaseException catch(e){
+      return left(e);
+    }
+  }
 }
