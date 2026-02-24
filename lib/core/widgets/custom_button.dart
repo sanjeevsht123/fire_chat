@@ -28,8 +28,10 @@ class CustomButton extends StatelessWidget {
           btnText ?? '',
           style:
               btnTextStyle ??
-              TextStyle(fontSize: 16, color: Theme.of(context).primaryColor),
+              TextStyle(fontSize: 16, color: Theme.of(context).secondaryHeaderColor),
+          
         ),
+        onPressed: onPressed, context: context
       ),
     );
   }
@@ -47,16 +49,16 @@ abstract class AppButton {
     }
   }
 
-  Widget build({required Widget child, VoidCallback? onPressed});
+  Widget build({required Widget child, VoidCallback? onPressed,required BuildContext context});
 }
 
 class AndroidButton implements AppButton {
   @override
-  Widget build({required Widget child, VoidCallback? onPressed}) {
+  Widget build({required Widget child, VoidCallback? onPressed,required BuildContext context}) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).primaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
       child: child,
@@ -67,10 +69,10 @@ class AndroidButton implements AppButton {
 // iOS implementation (Cupertino style)
 class IOSButton implements AppButton {
   @override
-  Widget build({required Widget child, VoidCallback? onPressed}) {
+  Widget build({required Widget child, VoidCallback? onPressed,required BuildContext context}) {
     return CupertinoButton(
       onPressed: onPressed,
-      color: Colors.blue,
+      color: Theme.of(context).primaryColor,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: child,
     );

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../auth/presentation/pages/login_screen.dart';
+
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
 
@@ -45,7 +47,7 @@ class LandingPage extends StatelessWidget {
             ).px(12.sp),
           ).pB(16.sp),
           GestureDetector(
-            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (_)=>SignUpPage())),
+            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen())),
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),

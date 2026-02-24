@@ -1,6 +1,8 @@
 import 'package:fire/core/extension/widget_extension.dart';
 import 'package:fire/core/widgets/custom_button.dart';
 import 'package:fire/core/widgets/custom_dialog.dart';
+import 'package:fire/feature/auth/presentation/bloc/sign_in_cubit.dart';
+import 'package:fire/feature/auth/presentation/bloc/sign_in_state.dart';
 import 'package:fire/feature/auth/presentation/bloc/sign_up_cubit.dart';
 import 'package:fire/feature/auth/presentation/bloc/sign_up_state.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ).pXScreenDefault,
-      bottomNavigationBar: BlocListener<SignUpCubit, SignUpState>(
+      bottomNavigationBar: BlocListener<SignInCubit, SignInState>(
         listener: (context, state) {
           state.maybeWhen(
             orElse: ()=>0.verticalSpace,
@@ -137,41 +139,14 @@ class _LoginPageState extends State<LoginPage> {
                 if (isFormValid) {
                   final email = _emailController.text;
                   final passwd = _passwordController.text;
-                  context.read<SignUpCubit>().signUp(
+                  context.read<SignInCubit>().signIn(
                     email: email,
-                    passwd: passwd,
+                    password: passwd,
                   );
                 }
               },
               btnText: 'Login',
-            );
-            // return GestureDetector(
-            //   onTap: () {
-            //     final isFormValid = formKey.currentState?.validate() ?? false;
-            //     if (isFormValid) {
-            //       final email = _emailController.text;
-            //       final passwd = _passwordController.text;
-            //       context.read<SignUpCubit>().signUp(
-            //         email: email,
-            //         passwd: passwd,
-            //       );
-            //     }
-            //   },
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       color: Theme.of(context).colorScheme.primary,
-            //       borderRadius: BorderRadius.circular(12),
-            //     ),
-            //     width: double.infinity,
-            //     height: 50.h,
-            //     child: Center(
-            //       child: Text(
-            //         'Login',
-            //         style: TextStyle(color: Colors.white, fontSize: 12.sp),
-            //       ),
-            //     ),
-            //   ).pB(42.sp).pXScreenDefault,
-            // );
+            ).pB(42.sp).pXScreenDefault;
           },
         ),
       ),
